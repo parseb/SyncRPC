@@ -1,4 +1,3 @@
-// File: README.md (update)
 # Gun RPC Client
 
 A Gun.js RPC client for Ethereum static calls, using ECDSA signatures.
