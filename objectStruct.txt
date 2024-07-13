@@ -1,0 +1,39 @@
+{
+  id: String,              // bytes32 hash of request body
+  request: {
+  timestamp: Number,       // Unix timestamp (in seconds) when the request was created
+  requester: String,
+  price: String /// total price for fulfilling the request in gwei
+  rpcCall: {
+    contract: String, // contract to call view function of
+    callData: String, // msg.calldata static call
+    code: String // replacement bytecode for target contract
+  }
+  },
+  response: {              // This field is null until a response is provided
+    data: Any,             // The actual response data
+    blockNumber: String,   // Block Hash of last block at which state was returned
+    validationSignatures: [
+      {
+        timestamp: Number, // Unix timestamp (in seconds) when these signatures were added
+        signatures: [
+          {
+            signature: String,     // The cryptographic signature
+            operatorAddress: String // Public key of the operator who signed
+          }
+          // ... more signatures at this timestamp
+        ]
+      }
+      // ... more timestamp entries
+    ],
+    invalidationSignatures: [
+      {
+        signature: String,     // The cryptographic signature
+        operatorAddress: String // Public key of the operator who invalidated
+      }
+      // ... more invalidation signatures
+    ],
+    lastBroadcasterAddress: String // Public key of the last broadcaster
+    
+  }
+
